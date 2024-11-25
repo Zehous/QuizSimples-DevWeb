@@ -10,6 +10,7 @@ var Btn4 = document.getElementById("Btn4");
 var LabelRs1 = document.getElementById("ResultLabel1");
 var LabelRs2 = document.getElementById("ResultLabel2");
 var LbAlert = document.getElementById("AlertStart");
+var CkShowResponse = document.getElementById("showResponses");
 var IndexQuestion = 0;
 var QuizAcertos = 0;
 var IntervalId = 0;
@@ -106,6 +107,18 @@ function NextQuestion()
     Btn2.innerText = Question.opcoes[1];
     Btn3.innerText = Question.opcoes[2];
     Btn4.innerText = Question.opcoes[3];
+
+    if (CkShowResponse.checked)
+    {
+        if (Question.respostaCorreta == 0)
+            Btn1.innerText += "*";
+        if (Question.respostaCorreta == 1)
+            Btn2.innerText += "*";
+         if (Question.respostaCorreta == 2)
+            Btn3.innerText += "*";
+         if (Question.respostaCorreta == 3)
+            Btn4.innerText += "*";
+    }
 
     VisibleElement(GameDiv);
 }
