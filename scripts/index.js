@@ -14,6 +14,7 @@ var CkShowResponse = document.getElementById("showResponses");
 var IndexQuestion = 0;
 var QuizAcertos = 0;
 var IntervalId = 0;
+var elem;
 
 // === Utilidade
 // Função para esconder um elemento
@@ -72,6 +73,8 @@ function Setup()
     HiddenElement(LbAlert);
     IndexQuestion = -1;
     QuizAcertos = 0;
+    if (elem)
+        elem.remove();
 }
 
 function OnStart()
@@ -149,7 +152,10 @@ function EndQuiz()
     LabelRs2.innerText = QuizAcertos + "/" + quiz.length + " (" + QuizAcertos / quiz.length * 100 + "%)";
     if (QuizAcertos > quiz.length * 0.6)
     {
-        LabelRs2.innerText += "\nParabens você acertou mais que 60% das perguntas.";
+        elem = document.createElement("p");
+        elem.innerText = "Parabens você acertou mais que 60% das perguntas.";
+        LabelRs2.appendChild(elem);
+        //LabelRs2.innerText += "\nParabens você acertou mais que 60% das perguntas.";
     }
 
     // Atualiza a interface para mostrar os resultados
